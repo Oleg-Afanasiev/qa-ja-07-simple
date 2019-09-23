@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -20,6 +21,7 @@ import org.testng.annotations.Test;
 import java.io.FileReader;
 import java.time.Duration;
 import java.util.Properties;
+import java.util.function.Function;
 
 import static com.telesens.automationpractice.page.HomePage.startFromHome;
 
@@ -76,7 +78,7 @@ public class AuthTests extends BaseTest {
         WebElement slider = driver.findElement(By.id("homeslider"));
         String[] styles = {"", "", ""};
 
-        ExpectedCondition<Boolean> rollingComplete =
+        Function<WebDriver, Boolean> rollingComplete =
                 driver1 -> {
                     // логика условия
                     System.out.println(slider.getAttribute("style"));
@@ -109,7 +111,7 @@ public class AuthTests extends BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, 30);
 
         // wait for jQuery to load
-        ExpectedCondition<Boolean> jQueryLoad = driver -> {
+        Function<WebDriver, Boolean> jQueryLoad = driver -> {
             try {
                 return ((Long)((JavascriptExecutor)driver).executeScript("return jQuery.active") == 0);
             }
@@ -120,7 +122,7 @@ public class AuthTests extends BaseTest {
         };
 
         // wait for Javascript to load
-        ExpectedCondition<Boolean> jsLoad = driver -> ((JavascriptExecutor)driver).executeScript("return document.readyState")
+        Function<WebDriver, Boolean> jsLoad = driver -> ((JavascriptExecutor)driver).executeScript("return document.readyState")
                 .toString().equals("complete");
 
         return wait.until(jQueryLoad) && wait.until(jsLoad);

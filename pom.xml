@@ -30,6 +30,18 @@
             <version>7.0.0</version>
         </dependency>
 
+        <!--Cucumber-->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>4.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>4.7.2</version>
+        </dependency>
+
         <!--Logger -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -40,6 +52,30 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.12.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-iostreams</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>24.0-jre</version>
+        </dependency>
+
+        <!--Http proxy-->
+        <dependency>
+            <groupId>net.lightbody.bmp</groupId>
+            <artifactId>browsermob-core</artifactId>
+            <version>2.1.5</version>
+            <exclusions>
+                <exclusion>  <!-- declare the exclusion here -->
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-java</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
