@@ -36,7 +36,7 @@ public class RozetkaSteps {
     }
 
     @Then("подождем {int} сек")
-    public void wait(int duration) throws InterruptedException {
+    public void wait(Integer  duration) throws InterruptedException {
         Thread.sleep(duration*1000);
     }
 
