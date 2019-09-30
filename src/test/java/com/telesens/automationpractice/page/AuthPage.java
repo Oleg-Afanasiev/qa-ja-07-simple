@@ -24,18 +24,12 @@ public class AuthPage extends BasePage {
     }
 
     public AuthPage enterEmail(String email) {
-//        emailField.click();
-//        emailField.clear();
-//        emailField.sendKeys(email);
         inputTextField(emailField, email);
 
         return this;
     }
 
     public AuthPage enterPassword(String passw) {
-//        passwField.click();
-//        passwField.clear();
-//        passwField.sendKeys(passw);
         inputTextField(passwField, passw);
         return this;
     }

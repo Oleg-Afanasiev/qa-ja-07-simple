@@ -47,7 +47,7 @@ public class RozetkaTests extends BaseTest {
         driver.findElement(By.xpath("//*[@id='sort_view']/div/ul/li/a[contains(text(), 'от дешевых')]")).click();
 
         //div[contains(@class, 'sort-popup') and contains(@style, 'visibility: hidden')]
-        new WebDriverWait(driver, Duration.ofSeconds(10))
+        new WebDriverWait(driver, 10000)
                 .until(ExpectedConditions.presenceOfElementLocated(
                         By.xpath("//div[contains(@class, 'sort-popup') and contains(@style, 'visibility: hidden')]")
                 ));
