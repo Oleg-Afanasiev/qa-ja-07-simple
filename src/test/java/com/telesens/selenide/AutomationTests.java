@@ -1,9 +1,10 @@
 package com.telesens.selenide;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.telesens.selenide.page.HomePage;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Configuration.*;
@@ -18,6 +19,10 @@ public class AutomationTests {
         baseUrl = "http://automationpractice.com/index.php";
         timeout = 10000;
         startMaximized = true;
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(false)
+        );
     }
 
     @Test

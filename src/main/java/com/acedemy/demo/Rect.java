@@ -4,6 +4,10 @@ public class Rect {
     private double length;
     private double height;
 
+    public static void main(String[] args) {
+
+    }
+
     public Rect(double length, double height) {
         this.length = length;
         this.height = height;

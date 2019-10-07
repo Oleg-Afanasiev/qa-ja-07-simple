@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="selenium">
+<suite name="Selenide tests">
     <test name="rozetka">
-        <packages>
-            <package name="com.telesens.selenide.*" />
-        </packages>
+        <classes>
+            <class name="com.telesens.selenide.RozetkaTests" />
+        </classes>
+    </test>
+    <test name="automationpractice">
+        <classes>
+            <class name="com.telesens.selenide.AutomationTests" />
+        </classes>
     </test>
 </suite>

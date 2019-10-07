@@ -2,6 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="selenium">
+<!--    <listeners>-->
+<!--        <listener class-name="com.telesens.automationpractice.listener.TestListener"></listener>-->
+<!--    </listeners>-->
     <test name="login-chrome">
         <parameter name="browser" value="chrome" />
         <classes>

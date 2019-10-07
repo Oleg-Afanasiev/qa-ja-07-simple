@@ -1,8 +1,10 @@
 package com.telesens.automationpractice;
 
+import com.telesens.automationpractice.listener.TestListener;
 import com.telesens.automationpractice.page.AuthPage;
 import com.telesens.framework.page.BasePage;
 import com.telesens.framework.test.BaseTest;
+import io.qameta.allure.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -13,10 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Ignore;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.io.FileReader;
 import java.time.Duration;
@@ -25,6 +24,9 @@ import java.util.function.Function;
 
 import static com.telesens.automationpractice.page.HomePage.startFromHome;
 
+@Epic("Regression tests")
+@Feature("Auth tests")
+@Listeners(TestListener.class)
 public class AuthTests extends BaseTest {
     private static final Logger LOG =  LogManager.getLogger(AuthTests.class);
     private static final String DEFAULT_PATH = "src/main/resources/automationpractice.properties";
@@ -41,7 +43,6 @@ public class AuthTests extends BaseTest {
         baseUrl = prop.getProperty("base.url");
     }
 
-    @Test(enabled = false)
     public void testAuthSuccess() throws Exception {
         driver.get(baseUrl);
         driver.findElement(By.linkText("Sign in")).click();
@@ -57,8 +58,11 @@ public class AuthTests extends BaseTest {
 //        Assert.assertEquals("", "Oleg....");
     }
 
-
-    @Test(dataProvider = "authErrorMessageProvider")
+    @Test(dataProvider = "authErrorMessageProvider", description = "Invalid auth scenario")
+    @Description("Description: Auth test with wrong login or password and checking msg error  ")
+    @Issue("AP-122")
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("invalid login and password tests")
     public void testAuthErrorMessage(String login, String passw, String expectedError) {
         BasePage basePage = startFromHome(driver, baseUrl)
                 .clickSignIn()
@@ -67,7 +71,6 @@ public class AuthTests extends BaseTest {
                 .pressSubmit();
 
         String actualError = ((AuthPage) basePage).getErrorMessage();
-
         Assert.assertEquals(actualError, expectedError);
     }
 
@@ -132,7 +135,7 @@ public class AuthTests extends BaseTest {
     public Object[][] authErrorMessageProvider() {
         return new Object[][]{
                 {"log", "passw", "Invalid email address."},
-                {"vasya", "123", "Invalid email address."}
+                {"vasya", "123", "Invalid email address1."}
         };
 //        List<String[]> parts = new ArrayList<>();
 //            while(hasNext()) {
