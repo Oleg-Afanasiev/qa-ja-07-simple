@@ -14,6 +14,7 @@ import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byPartialLinkText;
 import static com.codeborne.selenide.Selenide.*;
 
+// Rozetka tests using selenide
 public class RozetkaTests {
 
     private String menuNBItemCss = "body > app-root > div > div:nth-child(2) > app-rz-main-page > div > aside > main-page-sidebar > sidebar-fat-menu > div > ul > li:nth-child(1) > a";
